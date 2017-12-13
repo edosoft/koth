@@ -9,14 +9,37 @@ import { Player } from "../player";
 export class GameComponent implements OnInit {
 
   player: Player;
+  cont: any = 0;
+  gameStatus: boolean = false;
+  timer: any = null;
+
 
   constructor() { }
       
   ngOnInit() {
   }
 
-  play(player){
+  play(){
+    this.gameStatus = true;
+    console.log(this.gameStatus);
+    this.timer = setInterval(this.playTimer.bind(this), 1);
+  }
 
+  playTimer(){
+    this.cont++;
+
+  }
+
+  endGame(){
+    clearInterval(this.timer);
+    this.saveGame();
+    this.cont = 0;
+    this.gameStatus = false;
+  }
+
+  saveGame(){
+    return null;
+    // Save on FIREBASE the current game result
   }
 
 }
