@@ -13,11 +13,13 @@ import { environment } from '../environments/environment';
 import {AuthService} from './auth.service'
 
 import { AppComponent } from './app.component';
+import { LeaderListComponent } from './leader-list/leader-list.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LeaderListComponent
   ],
   imports: [
     BrowserModule,
