@@ -12,13 +12,21 @@ import {AuthService} from './auth.service';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { SigninComponent } from './signin/signin.component';
+=======
+import { SignComponent } from './sign/sign.component';
+>>>>>>> 4083ea42877ab259f5b5b431d25e419664ba2519
 
 
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     SigninComponent
+=======
+    SignComponent
+>>>>>>> 4083ea42877ab259f5b5b431d25e419664ba2519
   ],
   imports: [
     BrowserModule,
