@@ -1,13 +1,37 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {KothMaterialModule} from './koth-material/koth-material.module'
+import { AuthService } from './auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { Routes, RouterModule } from '@angular/router';
+
+
+
+import { environment } from '../environments/environment';
+import * as firebase from 'firebase/app';
 describe('AppComponent', () => {
   beforeEach(async(() => {
+    const firebaseConfig = {
+  apiKey: 'xxx',
+  authDomain: 'xxx',
+  databaseURL: 'xxx',
+  storageBucket: 'xxx',
+  messagingSenderId: 'xxx',
+};
     TestBed.configureTestingModule({
-     imports: [ KothMaterialModule],
+     imports: [ KothMaterialModule,
+       AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,
+       AngularFireDatabaseModule,
+       RouterModule
+],
       declarations: [
         AppComponent
       ],
+      providers: [AuthService,AngularFireAuth]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
