@@ -1,15 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {KothMaterialModule} from './koth-material/koth-material.module'
+import { GameComponent } from './game/game.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
      imports: [ KothMaterialModule],
       declarations: [
-        AppComponent
+        AppComponent,
+        GameComponent
       ],
     }).compileComponents();
   }));
+  
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
