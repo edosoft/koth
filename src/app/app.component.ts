@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   user = null;
   constructor(
-    private auth: AuthService,
+   private auth: AuthService,
    public db: AngularFireDatabase,
    private router: Router) { }
    ngOnInit() {
