@@ -14,13 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
+import { GameComponent } from './game/game.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ScoreComponent,
-    SigninComponent
+    SigninComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
