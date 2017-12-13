@@ -3,6 +3,8 @@ import { AuthService } from './auth.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { Route} from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +19,9 @@ export class AppComponent implements OnInit {
   user = null;
   constructor(
     private auth: AuthService,
-    public db: AngularFireDatabase) { }
-    ngOnInit() {
+   public db: AngularFireDatabase,
+   private router: Router) { }
+   ngOnInit() {
     this.auth.currentUserObservable.subscribe(
       (user) => this.user = user);
       this.topics_refs = this.db.list('/topics');

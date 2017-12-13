@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-leader-list',
@@ -27,10 +30,10 @@ export class LeaderListComponent implements OnInit {
 
   user:string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    
+    this.sortJson();
   }
   sortJson(){
     this.records.sort(function(a, b){
@@ -41,10 +44,10 @@ export class LeaderListComponent implements OnInit {
     for (let i = 0; i < records.length; i++) {
       if (records[i].score < records[i+1].score){
         return false
+      }
+      return true;
     }
-    return true;
   }
-
 
 
 

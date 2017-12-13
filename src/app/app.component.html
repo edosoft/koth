@@ -6,7 +6,7 @@
 
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item>LeaderBoard</button>
+  <button mat-menu-item [routerLink]="['leaderList']">LeaderBoard</button>
 </mat-menu>
 <mat-card>
   <app-signin></app-signin>
@@ -15,3 +15,8 @@
   <button mat-raised-button color="primary">The</button>
   <button mat-raised-button color="accent">Buttons</button> -->
 </mat-card>
+
+<div class="container animated fadeIn">
+    
+        <router-outlet></router-outlet>
+      </div>

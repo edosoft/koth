@@ -1,4 +1,19 @@
-<p>
-  leader-list works!
-</p>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of records; let i=index">
+        <td>{{i+1}}</td>          
+        <td>{{player.user}}</td>
+        <td>{{player.score}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
