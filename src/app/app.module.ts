@@ -8,11 +8,13 @@ import { environment } from '../environments/environment';
 
 
 import { AppComponent } from './app.component';
+import { GameComponent } from './game/game.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
