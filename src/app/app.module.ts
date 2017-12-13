@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { SignComponent } from './sign/sign.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignComponent
   ],
   imports: [
     BrowserModule
