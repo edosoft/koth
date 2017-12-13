@@ -1,10 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, tick, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { Location } from "@angular/common";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Router } from "@angular/router";
 
 import { GameComponent } from './game.component';
+import { By } from '@angular/platform-browser';
 
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,19 +27,58 @@ describe('GameComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
-describe('Game', function(){
-  var user;
-  beforeEach(function(){
-    user = new User();
-  });
-  describe('when you are logged', function(){
+
+
+  describe('Player', function(){
+    var player;
+    let location: Location;
+    let router: Router;
+    let playButtonDe = fixture.debugElement.query(By.css('.playButton'));
+    let playButtonEl = playButtonDe.nativeElement;
+    let leaderInfoDe = fixture.debugElement.query(By.css('.leaderInfo'));
+    let leaderInfoEl = playButtonDe.nativeElement;
+
     beforeEach(function(){
-      user.isLoged();
-      user.logout();
+      player = new Player();
     });
-    it("user after logout is null", function(){
+  
+    describe('when you are logged', function(){
+  
+      beforeEach(function(){
+        player.logout();
+      });
+  
+      it("player after logout is null", function(){
+        expect(player).toBeNull;
+      });
+   
+      it('should be to redirected to login page', fakeAsync(() => {
+        router.navigate(['login']);
+        tick();
+        expect(location.path()).toBe('/login');
+      }));
+
+      it("is the King", function(){
+        expect(playButtonEl.style.backgroundColor).toEqual('green');  
+      });
+      it("is not the King", function(){
+        expect(playButtonEl.style.backgroundColor).toEqual('red');  
+      });
       
-    })
+    });
+  
+    it("Has clicked Play on button", function(){
+      expect(player.getGameStatus()).toBeTruthy();
+      expect(player.getTime()).toBeGreaterThan(0);
+      expect(playButtonEl.hasAttribute('disabled')).toEqual(true);
+    });
+  
+    it("Has not clicked Play on button", function(){
+      expect(player.getGameStatus()).toBeFalsy();
+      expect(player.getTime()).toEqual(0);
+    });  
+  
   });
+
 });
+
