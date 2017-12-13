@@ -1,8 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {KothMaterialModule} from './koth-material/koth-material.module'
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+     imports: [ KothMaterialModule],
       declarations: [
         AppComponent
       ],
@@ -16,12 +18,12 @@ describe('AppComponent', () => {
   it(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
+    expect(app.title).toEqual('King of the Hill Game');
   }));
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a element with id=title', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+    expect(compiled.querySelector('#title').textContent).toContain('King of the Hill Game');
   }));
 });
