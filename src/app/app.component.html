@@ -1,17 +1,21 @@
+<<<<<<< HEAD
 <mat-toolbar color="primary">
   <button mat-icon-button [mat-menu-trigger-for]="menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <span id="title">{{title}}</span>
-
+=======
+<app-sign></app-sign>
+>>>>>>> 4083ea42877ab259f5b5b431d25e419664ba2519
 
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item>LeaderBoard</button>
 </mat-menu>
 <mat-card>
-  <button mat-button>All</button>
+    <app-signin></app-signin>
+  <!-- <button mat-button>All</button>
   <button mat-raised-button>Of</button>
   <button mat-raised-button color="primary">The</button>
-  <button mat-raised-button color="accent">Buttons</button>
+  <button mat-raised-button color="accent">Buttons</button> -->
 </mat-card>

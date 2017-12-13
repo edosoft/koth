@@ -1,4 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
+
 import { AppComponent } from './app.component';
 import {KothMaterialModule} from './koth-material/koth-material.module'
 import { AuthService } from './auth.service';
@@ -13,6 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
+import { FormsModule } from '@angular/forms';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     const firebaseConfig = {
@@ -26,7 +28,8 @@ describe('AppComponent', () => {
      imports: [ KothMaterialModule,
        AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,
        AngularFireDatabaseModule,
-       RouterModule
+       RouterModule,
+       FormsModule
 ],
       declarations: [
         AppComponent
