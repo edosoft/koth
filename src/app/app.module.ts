@@ -36,15 +36,13 @@ var config = {
     BrowserModule,
     BrowserAnimationsModule,
     KothMaterialModule,
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(
-      routes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
+    RouterModule
+
   ],
-  providers: [AuthService,KothService],
+  providers: [AuthService, KothService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
