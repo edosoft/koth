@@ -29,7 +29,7 @@ describe('LeaderListComponent', () => {
 
   it('should have less than 11 elements', function() {
     let compiled = fixture.debugElement.nativeElement;
-    let elements = compiled.querySelectorAll('li');
+    let elements = compiled.querySelectorAll('tr');
     expect(elements.length).toBeLessThan(11);
   });
 
