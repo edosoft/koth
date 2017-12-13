@@ -13,11 +13,13 @@ import { environment } from '../environments/environment';
 import {AuthService} from './auth.service'
 
 import { AppComponent } from './app.component';
+import { ScoreComponent } from './score/score.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScoreComponent
   ],
   imports: [
     BrowserModule,
