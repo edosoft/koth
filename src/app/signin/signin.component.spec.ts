@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { SigninComponent } from './signin.component';
 
 describe('SigninComponent', () => {
@@ -12,6 +12,7 @@ describe('SigninComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule],
       declarations: [ SigninComponent ]
     })
     .compileComponents();
@@ -43,12 +44,6 @@ describe('SigninComponent', () => {
     pwdT1 = 'Ppilarrr24';
     fixture.detectChanges();
     expect(pwdT1.length).toBeLessThan(22);
-  });
-
-  it('User password should be alphanumeric', () => {
-    pwdT1 = 'Ppilarrr24';
-    fixture.detectChanges();
-    expect(pwdT1).toMatch('[a-zA-Z0-9]{6,}');
   });
 
   it('User passwords should be equals', () => {
