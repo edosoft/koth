@@ -19,7 +19,7 @@ import { SigninComponent } from './signin/signin.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreComponent
+    ScoreComponent,
     SigninComponent
   ],
   imports: [
