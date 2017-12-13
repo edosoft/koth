@@ -1,0 +1,16 @@
+<div class=loginStyle>
+  <body>
+  <div class="master_user">
+    <div>User:</div>
+  <input [(ngModel)]="user" [value]="user" id = "usuario" type="email" placeholder="Inserta tu email" >
+  </div>
+
+  <div class="master_pass">
+    <div>Password:</div>
+    <input [(ngModel)]="pass" [value]="pass" id = "pass" type="password" placeholder="Inserta tu contraseña" >
+  </div>
+
+  <button (click)="login_function()" type="btn_log_in" id="log" class="btn btn-info log_f">Log In</button>
+  <button type="sign_in" id="sign" class="btn btn-info sign_in">Sign In</button>
+  </body>
+</div>
