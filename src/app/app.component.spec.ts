@@ -12,6 +12,7 @@ import { SigninComponent } from './signin/signin.component';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
 import { FormsModule } from '@angular/forms';
+import { GameComponent } from './game/game.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -34,7 +35,8 @@ describe('AppComponent', () => {
 
     declarations: [
       AppComponent,
-      SigninComponent
+      SigninComponent,
+      GameComponent
     ],
     providers: [AuthService, AngularFireAuth]
   }).compileComponents();
