@@ -13,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
+import { FormsModule } from '@angular/forms';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     const firebaseConfig = {
@@ -26,7 +27,8 @@ describe('AppComponent', () => {
      imports: [ KothMaterialModule,
        AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,
        AngularFireDatabaseModule,
-       RouterModule
+       RouterModule,
+       FormsModule
 ],
       declarations: [
         AppComponent

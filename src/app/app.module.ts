@@ -8,7 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
 
 import { environment } from '../environments/environment';
-import {AuthService} from './auth.service'
+import {AuthService} from './auth.service';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
