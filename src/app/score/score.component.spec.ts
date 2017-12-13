@@ -25,15 +25,27 @@ describe('ScoreComponent', () => {
   });
 
   it('should display title', () => {
-    const de = fixture.debugElement.query(By.css('h1'));
+    const de = fixture.debugElement.query(By.css('.title'));
     const el = de.nativeElement;
     expect(el.textContent).toEqual('Score');
   });
 
   it('should display score', () => {
+    component.record = 2;
+    component.score = 0;
+    fixture.detectChanges();
     const scoreText = fixture.debugElement.query(By.css('p'));
     const el = scoreText.nativeElement;
     expect(el.textContent).toEqual(`Your score is: ${component.score}`);
+  });
+
+  it('should congrat you if you beat your record', () => {
+    component.record = 0;
+    component.score = 2;
+    fixture.detectChanges();
+    const scoreText = fixture.debugElement.query(By.css('p'));
+    const el = scoreText.nativeElement;
+    expect(el.textContent).toEqual(`Congratulations, you have beaten your record: ${component.score}`);
   });
 
   it('should display ranking position', () => {
@@ -60,6 +72,7 @@ describe('ScoreComponent', () => {
 
   it('should have a button to retry', () => {
     const retryBtn = fixture.debugElement.query(By.css('button'));
-    retryBtn.triggerEventHandler('click', null);
+    const el = retryBtn.nativeElement.getAttribute('routerLink');
+    expect(el).toEqual('/test');
   });
 });

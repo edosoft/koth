@@ -1,8 +1,10 @@
-<h1>Score</h1>
-<p>Your score is: {{score}}</p>
+<h1 class="title">Score</h1>
+
+<p *ngIf="score <= record">Your score is: {{score}}</p>
+<p *ngIf="score > record">Congratulations, you have beaten your record: {{score}}</p>
 
 <p>Position on Ranking: {{rank}}</p>
 
 <p>Your current record is: {{record}}</p>
 
-<button>Retry</button>
+<button class="mat-raised-button mat-primary" routerLink="/test">Retry</button>
