@@ -13,11 +13,13 @@ import { environment } from '../environments/environment';
 import {AuthService} from './auth.service'
 
 import { AppComponent } from './app.component';
+import { SignComponent } from './sign/sign.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignComponent
   ],
   imports: [
     BrowserModule,
