@@ -47,41 +47,5 @@ ngOnInit() {
     });
   });
   }
-
-
-  // this.data_refs = this.db.list('/', {}).subscribe(res => {
-  //
-  // }));
+  
 }
- //
- //  const temp = this.db.object('/0/email');
- //  console.log(temp);
- //
- //
- //
- //  this.data_refs = this.db.list('/users', user => {
- //    console.log("blabla: " + user);
- //    return user
- //  });
- //
- //
- //  console.log("Lista de datos: " + this.data_refs);
- //  // let path = `users/0`;
- //  console.log("Ruta: " + this.db.list('/0'));
- //  //  this.auth.currentUserObservable.subscribe(
- //  //    (user) =>{
- //  //      this.user = user;
- //  //      console.log("Este es el observable: " + user);
- //  //    });
- //  //    console.log("Este es el console: " + this.db.list('/users'));
- //  //    this.data_refs = this.db.list('/');
- //  //    this.data = this.data_refs.valueChanges();
- // }
- //
- //  getUserInfo() {
- //    // const user = this.auth.;
- //    console.log("Este es el usuario logueado")
- //    //this.rank = this.user.highrank;
- //    //this.record = this.user.highscore;
- //
- //  }
