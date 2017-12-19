@@ -76,3 +76,4 @@ describe('ScoreComponent', () => {
     expect(el).toEqual('/test');
   });
 });
+
