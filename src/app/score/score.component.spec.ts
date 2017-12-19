@@ -86,3 +86,4 @@ describe('ScoreComponent', () => {
     expect(el.textContent).toEqual('Retry');
   });
 });
+
