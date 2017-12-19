@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ScoreComponent } from './score.component';
+import { ScoreComponent } from './score.component.ts';
 import { AuthService } from '../auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
@@ -86,4 +86,3 @@ describe('ScoreComponent', () => {
     expect(el.textContent).toEqual('Retry');
   });
 });
-
