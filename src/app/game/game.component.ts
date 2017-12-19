@@ -13,7 +13,6 @@ export class GameComponent implements OnInit {
   gameStatus: boolean = false;
   timer: any = null;
 
-
   constructor() { }
       
   ngOnInit() {
@@ -32,13 +31,13 @@ export class GameComponent implements OnInit {
 
   endGame(){
     clearInterval(this.timer);
-    this.saveGame();
+    this.saveGame(this.cont);
     this.cont = 0;
     this.gameStatus = false;
   }
 
-  saveGame(){
-    return null;
+  saveGame(cont){
+    
     // Save on FIREBASE the current game result
   }
 
