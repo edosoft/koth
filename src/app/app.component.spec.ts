@@ -12,33 +12,33 @@ import { SigninComponent } from './signin/signin.component';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('AppComponent', () => {
+  const appRoutes: Routes = [
+    {path: 'login', component: LoginComponent },
+    // {path: 'signin', component: SigninComponent },
+    // {path: 'game', component: GameComponent },
+    {path: '', redirectTo: 'login', pathMatch: 'full'}
+
+  ];
+
   beforeEach(async(() => {
-    const firebaseConfig = {
-
-  apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
-  authDomain: 'koth-edosoft.firebaseapp.com',
-  databaseURL: 'https://koth-edosoft.firebaseio.com',
-  storageBucket: 'koth-edosoft.appspot.com',
-  messagingSenderId: '148924484247',
-
-};
-  TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
-      AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+      FormsModule,
+      AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), AngularFireAuthModule,
       AngularFireDatabaseModule,
-      RouterModule,
-      FormsModule
+      RouterModule.forRoot(appRoutes, {enableTracing: true})
 ],
-
-    declarations: [
-      AppComponent,
-      SigninComponent
-    ],
-    providers: [AuthService, AngularFireAuth]
-  }).compileComponents();
-}));
+      declarations: [
+        AppComponent,
+        LoginComponent
+      ],
+      providers: [AuthService, AngularFireAuth,  {provide: APP_BASE_HREF, useValue : '/' }]
+    }).compileComponents();
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -46,7 +46,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'app'`,() => {
+  it(`should have as title 'app'`, () => {
 
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;

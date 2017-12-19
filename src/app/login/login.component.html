@@ -11,6 +11,7 @@
   </div>
 
   <button (click)="login_function()" type="btn_log_in" id="log" class="btn btn-info log_f">Log In</button>
-  <button type="sign_in" id="sign" class="btn btn-info sign_in">Sign In</button>
+  <button type="sign_in" id="sign" (click)="signIn()" class="btn btn-info sign_in">Sign In</button>
+  <blockquote *ngIf= 'this.auth == false'>Invalid User or Password</blockquote>
   </body>
 </div>
