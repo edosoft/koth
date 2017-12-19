@@ -7,14 +7,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
 
-
-
 import { environment } from '../environments/environment';
 import {AuthService} from './auth.service'
 
 import { AppComponent } from './app.component';
 import { ScoreComponent } from './score/score.component';
-
 
 @NgModule({
   declarations: [
