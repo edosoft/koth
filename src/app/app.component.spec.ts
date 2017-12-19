@@ -16,11 +16,13 @@ import { FormsModule } from '@angular/forms';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     const firebaseConfig = {
+
   apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
   authDomain: 'koth-edosoft.firebaseapp.com',
   databaseURL: 'https://koth-edosoft.firebaseio.com',
   storageBucket: 'koth-edosoft.appspot.com',
   messagingSenderId: '148924484247',
+
 };
   TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
@@ -29,6 +31,7 @@ describe('AppComponent', () => {
       RouterModule,
       FormsModule
 ],
+
     declarations: [
       AppComponent,
       SigninComponent
@@ -42,7 +45,9 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
+
   it(`should have as title 'app'`,() => {
+
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('King of the Hill Game');
