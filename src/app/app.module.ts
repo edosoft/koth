@@ -26,7 +26,7 @@ import { SigninComponent } from './signin/signin.component';
     BrowserModule,
     BrowserAnimationsModule,
     KothMaterialModule,
-    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     RouterModule,

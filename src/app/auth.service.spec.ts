@@ -15,11 +15,11 @@ import * as firebase from 'firebase/app';
 describe('AuthService', () => {
   beforeEach(() => {
     const firebaseConfig = {
-  apiKey: 'xxx',
-  authDomain: 'xxx',
-  databaseURL: 'xxx',
-  storageBucket: 'xxx',
-  messagingSenderId: 'xxx',
+      apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
+      authDomain: 'koth-edosoft.firebaseapp.com',
+      databaseURL: 'https://koth-edosoft.firebaseio.com',
+      storageBucket: 'koth-edosoft.appspot.com',
+      messagingSenderId: '148924484247'
 };
     TestBed.configureTestingModule({
       imports : [AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,AngularFireDatabaseModule
