@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   user = null;
   constructor(
-   private auth: AuthService,
+    private auth: AuthService,
    public db: AngularFireDatabase,
    private router: Router) { }
    ngOnInit() {
@@ -27,5 +27,4 @@ export class AppComponent implements OnInit {
       this.topics_refs = this.db.list('/topics');
       this.topics = this.topics_refs.valueChanges();
   }
-
 }
