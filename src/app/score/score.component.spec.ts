@@ -10,7 +10,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {KothMaterialModule} from '../koth-material/koth-material.module'
 import { Routes, RouterModule } from '@angular/router';
 import * as firebase from 'firebase/app';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 
 describe('ScoreComponent', () => {
@@ -18,16 +18,9 @@ describe('ScoreComponent', () => {
   let fixture: ComponentFixture<ScoreComponent>;
 
   beforeEach(async(() => {
-    const firebaseConfig = {
-  apiKey: 'xxx',
-  authDomain: 'xxx',
-  databaseURL: 'https://koth-edosoft.firebaseio.com/',
-  storageBucket: 'xxx',
-  messagingSenderId: 'xxx',
-};
     TestBed.configureTestingModule({
       imports: [ KothMaterialModule,
-        AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebase),AngularFireAuthModule,
         AngularFireDatabaseModule,
         RouterModule
       ],
