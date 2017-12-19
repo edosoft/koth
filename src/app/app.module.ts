@@ -1,6 +1,6 @@
 import {KothMaterialModule} from './koth-material/koth-material.module';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 import { LoginComponent } from './login/login.component';
+import { GameComponent } from './game/game.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent },
@@ -23,12 +24,14 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ScoreComponent,
     SigninComponent,
-    LoginComponent
+    LoginComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

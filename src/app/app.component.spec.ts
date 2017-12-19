@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
+import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
@@ -15,17 +16,19 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {APP_BASE_HREF} from '@angular/common';
 
+import { GameComponent } from './game/game.component';
+
 describe('AppComponent', () => {
-  const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent },
-    // {path: 'signin', component: SigninComponent },
-    // {path: 'game', component: GameComponent },
-    {path: '', redirectTo: 'login', pathMatch: 'full'}
-
-  ];
-
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+    const firebaseConfig = {
+      apiKey: "",
+      authDomain: "koth-edosoft.firebaseapp.com",
+      databaseURL: "https://koth-edosoft.firebaseio.com",
+      projectId: "koth-edosoft",
+      storageBucket: "koth-edosoft.appspot.com",
+      messagingSenderId: ""
+};
+  TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
       FormsModule,
       AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), AngularFireAuthModule,
@@ -34,7 +37,10 @@ describe('AppComponent', () => {
 ],
       declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        ScoreComponent,
+        SigninComponent,
+        GameComponent
       ],
       providers: [AuthService, AngularFireAuth,  {provide: APP_BASE_HREF, useValue : '/' }]
     }).compileComponents();
