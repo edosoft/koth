@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
+import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
@@ -31,15 +32,16 @@ describe('AppComponent', () => {
       RouterModule,
       FormsModule
 ],
+      declarations: [
+        AppComponent,
+        ScoreComponent,
+        SigninComponent,
+        GameComponent
 
-    declarations: [
-      AppComponent,
-      SigninComponent,
-      GameComponent
-    ],
-    providers: [AuthService, AngularFireAuth]
-  }).compileComponents();
-}));
+      ],
+      providers: [AuthService,AngularFireAuth]
+    }).compileComponents();
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

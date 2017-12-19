@@ -16,7 +16,6 @@ import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 import { GameComponent } from './game/game.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
