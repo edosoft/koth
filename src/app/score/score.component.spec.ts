@@ -1,15 +1,38 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { ScoreComponent } from './score.component';
+import { AuthService } from '../auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {KothMaterialModule} from '../koth-material/koth-material.module'
+import { Routes, RouterModule } from '@angular/router';
+import * as firebase from 'firebase/app';
+import { environment } from '../environments/environment';
+
 
 describe('ScoreComponent', () => {
   let component: ScoreComponent;
   let fixture: ComponentFixture<ScoreComponent>;
 
   beforeEach(async(() => {
+    const firebaseConfig = {
+  apiKey: 'xxx',
+  authDomain: 'xxx',
+  databaseURL: 'https://koth-edosoft.firebaseio.com/',
+  storageBucket: 'xxx',
+  messagingSenderId: 'xxx',
+};
     TestBed.configureTestingModule({
-      declarations: [ ScoreComponent ]
+      imports: [ KothMaterialModule,
+        AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        RouterModule
+      ],
+      declarations: [ ScoreComponent ],
+      providers: [AuthService,AngularFireAuth],
     })
     .compileComponents();
   }));
@@ -68,11 +91,5 @@ describe('ScoreComponent', () => {
     const retryBtn = fixture.debugElement.query(By.css('button'));
     const el = retryBtn.nativeElement;
     expect(el.textContent).toEqual('Retry');
-  });
-
-  it('should have a button to retry', () => {
-    const retryBtn = fixture.debugElement.query(By.css('button'));
-    const el = retryBtn.nativeElement.getAttribute('routerLink');
-    expect(el).toEqual('/test');
   });
 });

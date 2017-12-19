@@ -18,7 +18,7 @@ describe('AppComponent', () => {
     const firebaseConfig = {
   apiKey: 'xxx',
   authDomain: 'xxx',
-  databaseURL: 'xxx',
+  databaseURL: 'https://koth-edosoft.firebaseio.com/',
   storageBucket: 'xxx',
   messagingSenderId: 'xxx',
 };
