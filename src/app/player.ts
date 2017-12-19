@@ -1,18 +1,24 @@
 export class Player{
     name: string;
     gameStatus: boolean;
-    time: any;
+    score: any;
+    games: any;
+    rank: any;
+    
     
     setGameStatus(status){
         this.gameStatus = status;
     }
 
-    setTime(time){
-        this.time = time;
+    setScore(score){
+        this.score = score;
+    }
+    setName(name){
+        this.name = name;
     }
 
-    getTime(){
-        return this.time;
+    getScore(){
+        return this.score;
     }
 
     getGameStatus(){

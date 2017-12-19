@@ -17,13 +17,12 @@ import { GameComponent } from './game/game.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     const firebaseConfig = {
-
-  apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
-  authDomain: 'koth-edosoft.firebaseapp.com',
-  databaseURL: 'https://koth-edosoft.firebaseio.com',
-  storageBucket: 'koth-edosoft.appspot.com',
-  messagingSenderId: '148924484247',
-
+      apiKey: "AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI",
+      authDomain: "koth-edosoft.firebaseapp.com",
+      databaseURL: "https://koth-edosoft.firebaseio.com",
+      projectId: "koth-edosoft",
+      storageBucket: "koth-edosoft.appspot.com",
+      messagingSenderId: "148924484247"
 };
   TestBed.configureTestingModule({
     imports: [ KothMaterialModule,

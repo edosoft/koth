@@ -2,18 +2,34 @@ import { async, tick, ComponentFixture, TestBed, fakeAsync } from '@angular/core
 import { Location } from "@angular/common";
 import { RouterTestingModule } from "@angular/router/testing";
 import { Router } from "@angular/router";
-
+import { AppComponent } from '../app.component';
+import {KothMaterialModule} from '../koth-material/koth-material.module'
+import { AuthService } from '../auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { GameComponent } from './game.component';
 import { By } from '@angular/platform-browser';
 import { Player } from '../player';
-
+import { environment } from '../../environments/environment';
+import * as firebase from 'firebase/app';
 
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
-
+  
 
   beforeEach(async(() => {
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI",
+      authDomain: "koth-edosoft.firebaseapp.com",
+      databaseURL: "https://koth-edosoft.firebaseio.com",
+      projectId: "koth-edosoft",
+      storageBucket: "koth-edosoft.appspot.com",
+      messagingSenderId: "148924484247"
+    }
     TestBed.configureTestingModule({
       declarations: [ GameComponent ]
     })

@@ -1,10 +1,14 @@
 .container-game .leaderInfo{
-    background-color: red;
     display: flex;
     justify-content: space-between;
     padding: 0px 15px;
 }
-
+.container-game .leaderInfoRed{
+    background-color: red;
+}
+.container-game .leaderInfoGreen{
+    background-color: green;
+}
 .container-game .container-play-timer{
     margin: 100px 0px;
     text-align: center;
