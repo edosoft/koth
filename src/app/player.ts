@@ -4,7 +4,7 @@ export class Player{
     score: any;
     games: any;
     rank: any;
-    
+    time: any;
     
     setGameStatus(status){
         this.gameStatus = status;
@@ -19,6 +19,13 @@ export class Player{
 
     getScore(){
         return this.score;
+    }
+    setTime(time){
+        this.time = time;
+    }
+
+    getTime(){
+        return this.time;
     }
 
     getGameStatus(){
