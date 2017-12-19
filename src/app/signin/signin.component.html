@@ -1,15 +1,29 @@
 <div class="component-login">
   <h2 color="accent">Sign in</h2>
   <br>
-  <p class="text-primary">Email</p>
+  <h3 class="text-primary">Email</h3>
+  <div *ngIf="checkEm==false">
+      <p>
+        <img src="../assets/images/favicon.ico"> 
+        Introduce a valid email direction</p>
+    </div>
   <input [(ngModel)]="userName" type="email" class="user-email" placeholder="User" aria-label="User" aria-describedby="basic-addon1">
-  <br>
-  <p class="text-primary">Password</p>
+  <h3 class="text-primary">Password</h3>
   <input [(ngModel)]="userPwd1" type="password" class="user-pwd1" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+  <div *ngIf="checkPwdLe==false">
+    <p>
+      <img src="../assets/images/favicon.ico">
+      The password should be longer than 6 and shorter than 22 characters</p>
+  </div>
   <br>
-  <p class="text-primary">Repeat Password</p>
+  <h3 class="text-primary">Repeat Password</h3>
   <input [(ngModel)]="userPwd2" type="password" class="user-pwd1" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-  <br><br>
+  <div *ngIf="checkPwdEq==false">
+    <p>
+      <img src="../assets/images/favicon.ico">
+      Both password should be equal</p>
+  </div>
+  <br>
+  <br>
   <button (click)="createAccount()" mat-raised-button color="primary">Create account</button>
 </div>
-
