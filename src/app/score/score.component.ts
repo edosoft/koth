@@ -15,6 +15,7 @@ export class ScoreComponent implements OnInit {
   score: number;
   rank: number;
   record: number;
+
   user_info: any;
   last_user_game: any;
   data  : Observable<any[]>;
