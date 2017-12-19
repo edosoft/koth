@@ -8,7 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ScoreComponent } from './score/score.component';
 
 
 import { environment } from '../environments/environment';
@@ -29,7 +29,8 @@ describe('AppComponent', () => {
        RouterModule
 ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ScoreComponent
       ],
       providers: [AuthService,AngularFireAuth]
     }).compileComponents();
