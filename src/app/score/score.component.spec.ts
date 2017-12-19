@@ -69,12 +69,18 @@ describe('ScoreComponent', () => {
     // const de = fixture.debugElement.queryAll(By.css('p'));
     // const el = de.map(el => el.nativeElement);
     // el.map(x => expect(x.textContent).toEqual(`Your score is: ${component.score}`));
+    component.record = 0;
+    component.score = 2;
+    fixture.detectChanges();
     const rankingText = fixture.debugElement.queryAll(By.css('p'))[1];
     const el = rankingText.nativeElement;
     expect(el.textContent).toEqual(`Position on Ranking: ${component.rank}`);
   });
 
   it('should display record', () => {
+    component.record = 0;
+    component.score = 2;
+    fixture.detectChanges();
     const recordText = fixture.debugElement.queryAll(By.css('p'))[2];
     const el = recordText.nativeElement;
     expect(el.textContent).toEqual(`Your current record is: ${component.record}`);
