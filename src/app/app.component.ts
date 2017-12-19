@@ -11,14 +11,14 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent implements OnInit {
   title = 'King of the Hill Game';
-  topics_refs : AngularFireList<any>;
-  topics  : Observable<any[]>;
+  topics_refs: AngularFireList<any>;
+  topics: Observable<any[]>;
 
   user = null;
   constructor(
     private auth: AuthService,
-   public db: AngularFireDatabase) { }
-   ngOnInit() {
+    public db: AngularFireDatabase) { }
+    ngOnInit() {
     this.auth.currentUserObservable.subscribe(
       (user) => this.user = user);
       this.topics_refs = this.db.list('/topics');
