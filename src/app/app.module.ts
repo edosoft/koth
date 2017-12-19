@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
