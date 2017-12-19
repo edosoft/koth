@@ -8,3 +8,9 @@
 <p>Your current record is: {{record}}</p>
 
 <button class="mat-raised-button mat-primary">Retry</button>
+
+<ul>
+  <li *ngFor="let todo of (data_refs | async)">
+    {{ todo.score }}
+  </li>
+</ul>
