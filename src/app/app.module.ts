@@ -20,7 +20,7 @@ import { GameComponent } from './game/game.component';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'signin', component: SigninComponent },
-  // {path: 'game', component: GameComponent },
+  {path: 'game', component: GameComponent },
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 

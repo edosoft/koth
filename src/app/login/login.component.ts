@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   login_function() {
     if (this.user == '' || this.pass == '') {
-      console.log('Usuario o contraseña inválidos');
+      console.log('Invalid User or Password');
       this.auth = false;
     }else {
       this.fAuth.emailLogin(this.user, this.pass).then(() => {
@@ -31,21 +31,21 @@ export class LoginComponent implements OnInit {
   }
 
   isAuth() {
-    console.log('Auth: ' + this.fAuth.authenticated);
+    console.log('Correct Login: ' + this.fAuth.authenticated);
     return this.fAuth.authenticated;
   }
 
   initializeGame() {
     if (this.auth == true) {
-      console.log("jump");
-      /*this.zone.run(() => {
+      console.log("Login: Starting game");
+      this.zone.run(() => {
         this.router.navigate(['/game']);
-      });*/
+      });
     }
   }
 
   signIn() {
-    console.log('sign in');
+    console.log('Login: Accessing Sign in');
     this.zone.run(() => {
       this.router.navigate(['/signin']);
     });

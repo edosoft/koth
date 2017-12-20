@@ -15,19 +15,17 @@ import * as firebase from 'firebase/app';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {APP_BASE_HREF} from '@angular/common';
-
 import { GameComponent } from './game/game.component';
 
 describe('AppComponent', () => {
+  const appRoutes: Routes = [
+    // {path: 'signin', component: SigninComponent },
+    // {path: 'signin', component: SigninComponent },
+    {path: 'login', component: LoginComponent },
+    {path: '', redirectTo: 'login', pathMatch: 'full'}
+
+];
   beforeEach(async(() => {
-    const firebaseConfig = {
-      apiKey: "",
-      authDomain: "koth-edosoft.firebaseapp.com",
-      databaseURL: "https://koth-edosoft.firebaseio.com",
-      projectId: "koth-edosoft",
-      storageBucket: "koth-edosoft.appspot.com",
-      messagingSenderId: ""
-};
   TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
       FormsModule,
