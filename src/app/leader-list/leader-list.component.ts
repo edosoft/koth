@@ -15,31 +15,22 @@ export class LeaderListComponent implements OnInit {
   records:any;
   games: any;
   user:string;
+  recordsLength:number;
 
 
   constructor(private router: Router, db: AngularFireDatabase) {
-    this.records =  db.list('/games', ref => ref.orderByChild('score')).valueChanges();
+    this.records =  db.list('/games', ref => ref.orderByChild('score').limitToLast(10)).valueChanges();
+    console.log(this.records);
   }
 
   ngOnInit() {
     this.records.subscribe( games => {
       this.games = games.reverse();
+      this.recordsLength = this.games.length;
       console.log(this.games);
-  });
-
-  }
-
-  sortJson(games){
-    games.sort(function(a, b){
-      return b.score - a.score
+      console.log("subscribe "+this.games.length);
+      console.log("subscribe "+this.recordsLength);
     });
+          console.log("subscribe "+this.recordsLength);
   }
-  // isSorted(records){
-  //   for (let i = 0; i < records.length; i++) {
-  //     if (records[i].score < records[i+1].score){
-  //       return false
-  //     }
-  //     return true;
-  //   }
-  // }
 }
