@@ -11,7 +11,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
 import * as firebase from 'firebase/app';
-
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('SigninComponent', () => {
   let component: SigninComponent;
@@ -19,25 +19,24 @@ describe('SigninComponent', () => {
   let userT;
   let pwdT1;
   let pwdT2;
+  const appRoutes: Routes = [
+    {path: 'signin', component: SigninComponent },
+    // {path: 'signin', component: SigninComponent },
+    // {path: 'game', component: GameComponent },
+    {path: '', redirectTo: 'signin', pathMatch: 'full'}
 
+];
 
   beforeEach(async(() => {
-    const firebaseConfig = {
-      apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
-      authDomain: 'koth-edosoft.firebaseapp.com',
-      databaseURL: 'https://koth-edosoft.firebaseio.com',
-      storageBucket: 'koth-edosoft.appspot.com',
-      messagingSenderId: '148924484247'
-    };
     TestBed.configureTestingModule({
       imports: [ KothMaterialModule,
-        AngularFireModule.initializeApp(firebaseConfig), AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), AngularFireAuthModule,
         AngularFireDatabaseModule,
-        RouterModule,
+        RouterModule.forRoot(appRoutes, {enableTracing: true}),
         FormsModule
  ],
       declarations: [ SigninComponent ],
-      providers: [AuthService, AngularFireAuth]
+      providers: [AuthService, AngularFireAuth, {provide: APP_BASE_HREF, useValue : '/' }]
     }).compileComponents();
   }));
 

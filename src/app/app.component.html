@@ -8,9 +8,15 @@
   <button mat-menu-item [routerLink]="['leaderList']">LeaderBoard</button>
 </mat-menu>
 <mat-card>
+  <!--Uncomment this in order to properly use it-->
+  <!--<app-signin></app-signin>-->
   <router-outlet></router-outlet>
+  <!--<button mat-button>All</button>
+  <button mat-raised-button>Of</button>
+  <button mat-raised-button color="primary">The</button>
+  <button mat-raised-button color="accent">Buttons</button> -->
 </mat-card>
 
-<div class="container animated fadeIn">
-  <router-outlet></router-outlet>
-</div>
+
+<app-score></app-score>
+<game></game>

@@ -15,25 +15,21 @@ import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
 import { FormsModule } from '@angular/forms';
 import { LeaderListComponent } from './leader-list/leader-list.component';
+import { LoginComponent } from './login/login.component';
 import {APP_BASE_HREF} from '@angular/common';
+import { GameComponent } from './game/game.component';
 
 describe('AppComponent', () => {
   const appRoutes: Routes = [
-      { path: 'leaderList', component: LeaderListComponent }
+      { path: 'leaderList', component: LeaderListComponent },
+      {path: 'login', component: LoginComponent },
+      {path: '', redirectTo: 'login', pathMatch: 'full'}
   ];
+
   beforeEach(async(() => {
-    const firebaseConfig = {
-
-  apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
-  authDomain: 'koth-edosoft.firebaseapp.com',
-  databaseURL: 'https://koth-edosoft.firebaseio.com',
-  storageBucket: 'koth-edosoft.appspot.com',
-  messagingSenderId: '148924484247',
-
-};
   TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
-      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
       AngularFireAuthModule,
       AngularFireDatabaseModule,
       RouterModule.forRoot(appRoutes, {enableTracing: true}),
@@ -44,7 +40,9 @@ describe('AppComponent', () => {
       AppComponent,
       LeaderListComponent,
       SigninComponent,
-      ScoreComponent
+      ScoreComponent,
+      LoginComponent,
+      GameComponent
     ],
     providers: [AuthService, AngularFireAuth, {provide: APP_BASE_HREF, useValue : '/' }]
   }).compileComponents();
@@ -56,7 +54,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'app'`,() => {
+  it(`should have as title 'app'`, () => {
 
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
