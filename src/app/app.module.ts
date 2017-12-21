@@ -24,6 +24,7 @@ export const routes: Routes = [
   { path: 'leaderList', component: LeaderListComponent }
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,

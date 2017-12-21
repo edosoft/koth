@@ -27,10 +27,6 @@ export class LeaderListComponent implements OnInit {
     this.records.subscribe( games => {
       this.games = games.reverse();
       this.recordsLength = this.games.length;
-      console.log(this.games);
-      console.log("subscribe "+this.games.length);
-      console.log("subscribe "+this.recordsLength);
     });
-          console.log("subscribe "+this.recordsLength);
   }
 }
