@@ -3,10 +3,9 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <span id="title">{{title}}</span>
-
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item>LeaderBoard</button>
+  <button mat-menu-item [routerLink]="['leaderList']">LeaderBoard</button>
 </mat-menu>
 <mat-card>
   <!--Uncomment this in order to properly use it-->
@@ -20,5 +19,4 @@
 
 
 <app-score></app-score>
-<game></game> 
-
+<game></game>

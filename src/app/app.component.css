@@ -1,0 +1,15 @@
+.example-fill-remaining-space{
+  flex: 1 1 auto;
+}
+
+.login{
+  margin-right: 2em;
+  color: #3f51b5;
+  font-size: inherit;
+}
+
+.signin{
+  margin-right: 2em;
+  color: #3f51b5;
+  font-size: inherit;
+}

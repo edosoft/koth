@@ -1,0 +1,18 @@
+<div>
+  <table class="table-fill">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody class="table-hover">
+      <tr *ngFor="let player of games; let i=index">
+        <td class="text-left">{{i+1}}</td>
+        <td class="text-left">{{player.email}}</td>
+        <td class="text-left">{{player.score}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
