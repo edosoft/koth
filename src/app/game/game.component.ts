@@ -19,6 +19,7 @@ export class GameComponent implements OnInit {
   timer: any = null;
   games: AngularFireList<any>;
   koth: AngularFireList<any>;
+  currentKing: AngularFireList<any>;
   currentUser: any;
   kingObservable: Observable<any[]>;
   score: any;
@@ -27,6 +28,7 @@ export class GameComponent implements OnInit {
   constructor(public database: AngularFireDatabase) {
     this.games = database.list('/games');
     this.koth = database.list('/');
+    this.currentKing = database.list('/KingOfTheHill')
     const kothObservable$ : AngularFireList<any> = database.list('kingOfTheHill');
     const kothObservable = database.object('kingOfTheHill/email');
   
@@ -59,20 +61,16 @@ export class GameComponent implements OnInit {
     this.gameStatus = true;
     console.log(this.gameStatus);
     this.timer = setInterval(this.playTimer.bind(this), 1);
-    this.setKing('aitor@test.com');
+    this.setKing('otro@test.com');
+    this.getKing();
   }
 
   playTimer(){
     this.cont++;
   }
-
+  
   endGame(){
-    // const queryObservable = this.kingObservable.switchMap(size =>
-    //   database.list('/kingOfTheHill', ref => ref.equalTo('email')).valueChanges()
-    // );
-    // queryObservable.subscribe(queriedItems => {
-    //   console
-    // })
+    
     clearInterval(this.timer);
     this.saveGame(this.currentUser, this.cont);
     this.cont = 0;
@@ -93,8 +91,12 @@ export class GameComponent implements OnInit {
         email: player
     });
   }
-  getKingLeader(){
-    this.games.query.orderByChild('score').limitToLast(1);
-
+  getKing(){
+    this.currentKing.valueChanges().subscribe((data) => {
+      console.log(data[0]);
+      if (data[0] != "otro@test.com"){
+        this.endGame()
+      }
+    });
   }
 }
