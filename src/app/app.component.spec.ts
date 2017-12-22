@@ -16,15 +16,6 @@ import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
-    const firebaseConfig = {
-
-  apiKey: 'AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI',
-  authDomain: 'koth-edosoft.firebaseapp.com',
-  databaseURL: 'https://koth-edosoft.firebaseio.com',
-  storageBucket: 'koth-edosoft.appspot.com',
-  messagingSenderId: '148924484247',
-
-};
   TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
       AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
