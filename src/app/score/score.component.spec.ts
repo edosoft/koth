@@ -20,7 +20,7 @@ describe('ScoreComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ KothMaterialModule,
-        AngularFireModule.initializeApp(environment.firebase),AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),AngularFireAuthModule,
         AngularFireDatabaseModule,
         RouterModule
       ],

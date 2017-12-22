@@ -23,15 +23,11 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'signin', component: SigninComponent },
   {path: 'game', component: GameComponent },
+  {path: 'leaderList', component: LeaderListComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 import { LeaderListComponent } from './leader-list/leader-list.component';
-
-
-export const routes: Routes = [
-  { path: 'leaderList', component: LeaderListComponent }
-];
 
 
 @NgModule({
@@ -47,7 +43,7 @@ export const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     KothMaterialModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),

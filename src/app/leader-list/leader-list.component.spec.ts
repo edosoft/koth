@@ -21,7 +21,7 @@ describe('LeaderListComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterModule.forRoot(appRoutes, {enableTracing: true}),
-        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
         AngularFireAuthModule,
         AngularFireDatabaseModule
       ],
@@ -47,7 +47,7 @@ describe('LeaderListComponent', () => {
     });
   });
 
-  it('should have less than 11 elements', function() {
+  it('should have less than 11 elements in the table', function() {
     let compiled = fixture.debugElement.nativeElement;
     let elements = compiled.querySelectorAll('tr');
     expect(elements.length).toBeLessThan(11);
