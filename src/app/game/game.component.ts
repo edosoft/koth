@@ -31,24 +31,10 @@ export class GameComponent implements OnInit {
     this.currentKing = database.list('/KingOfTheHill')
     const kothObservable$ : AngularFireList<any> = database.list('kingOfTheHill');
     const kothObservable = database.object('kingOfTheHill/email');
-  
-    // const queryObservable = this.kingObservable.switchMap(size =>
-    //   database.list('/kingOfTheHill', ref => ref.equalTo('email')).valueChanges()
-    // );
   }
       
   ngOnInit() {
     this.currentUser = "javi@test.com";
-    this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
-    this.score = this.maxScore.score;
-    this.maxScore.subscribe(item => {
-      this.maxScore = item[0].score;
-      this.leader = item[0].email;
-    })
-  }
-  ngOnChanges() {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
     this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
     this.score = this.maxScore.score;
     this.maxScore.subscribe(item => {
