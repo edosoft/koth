@@ -21,6 +21,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'signin', component: SigninComponent },
   {path: 'game', component: GameComponent },
+  {path: 'score', component: ScoreComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
