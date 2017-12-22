@@ -14,7 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
+import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game/game.component';
+
+const appRoutes: Routes = [
+  {path: 'login', component: LoginComponent },
+  {path: 'signin', component: SigninComponent },
+  {path: 'game', component: GameComponent },
+  {path: '', redirectTo: 'login', pathMatch: 'full'}
+];
 
 
 @NgModule({
@@ -22,6 +30,7 @@ import { GameComponent } from './game/game.component';
     AppComponent,
     ScoreComponent,
     SigninComponent,
+    LoginComponent,
     GameComponent
   ],
   imports: [
@@ -31,7 +40,7 @@ import { GameComponent } from './game/game.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
     FormsModule
   ],
   providers: [AuthService],

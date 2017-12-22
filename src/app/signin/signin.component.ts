@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router} from '@angular/router';
+import {NgZone} from '@angular/core';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +17,7 @@ export class SigninComponent implements OnInit {
   regexEmail: any;
   checkEm: boolean;
 
-  constructor(private fAuth: AuthService) {
+  constructor(private fAuth: AuthService, private zone: NgZone, private router: Router) {
   }
 
   ngOnInit() {
@@ -49,7 +51,12 @@ createAccount() {
   this.checkPassEquals();
   if ((this.checkEm === true) && (this.checkPwdLe === true) && (this.checkPwdEq === true)) {
     this.fAuth.emailSignUp(this.userName, this.userPwd1);
+    this.zone.run(() => {
+      this.router.navigate(['/login']);
+    });
   }
+
+
 }
 }
 

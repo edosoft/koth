@@ -8,38 +8,41 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Routes, RouterModule } from '@angular/router';
+import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import {APP_BASE_HREF} from '@angular/common';
 import { GameComponent } from './game/game.component';
 
 describe('AppComponent', () => {
+  const appRoutes: Routes = [
+    // {path: 'signin', component: SigninComponent },
+    // {path: 'signin', component: SigninComponent },
+    {path: 'login', component: LoginComponent },
+    {path: '', redirectTo: 'login', pathMatch: 'full'}
+
+];
   beforeEach(async(() => {
-    const firebaseConfig = {
-      apiKey: "AIzaSyC3cMoupowM4VP5V50ojjhO_MajTOpwNDI",
-      authDomain: "koth-edosoft.firebaseapp.com",
-      databaseURL: "https://koth-edosoft.firebaseio.com",
-      projectId: "koth-edosoft",
-      storageBucket: "koth-edosoft.appspot.com",
-      messagingSenderId: "148924484247"
-};
   TestBed.configureTestingModule({
     imports: [ KothMaterialModule,
-      AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+      FormsModule,
+      AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), AngularFireAuthModule,
       AngularFireDatabaseModule,
-      RouterModule,
-      FormsModule
+      RouterModule.forRoot(appRoutes, {enableTracing: true})
 ],
-
-    declarations: [
-      AppComponent,
-      SigninComponent,
-      GameComponent
-    ],
-    providers: [AuthService, AngularFireAuth]
-  }).compileComponents();
-}));
+      declarations: [
+        AppComponent,
+        LoginComponent,
+        ScoreComponent,
+        SigninComponent,
+        GameComponent
+      ],
+      providers: [AuthService, AngularFireAuth,  {provide: APP_BASE_HREF, useValue : '/' }]
+    }).compileComponents();
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -47,7 +50,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'app'`,() => {
+  it(`should have as title 'app'`, () => {
 
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;

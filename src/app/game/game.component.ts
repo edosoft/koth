@@ -68,9 +68,8 @@ export class GameComponent implements OnInit {
   playTimer(){
     this.cont++;
   }
-  
+
   endGame(){
-    
     clearInterval(this.timer);
     this.saveGame(this.currentUser, this.cont);
     this.cont = 0;
@@ -83,7 +82,6 @@ export class GameComponent implements OnInit {
       email: 'javi@test.com',
       score: cont  
     });
-    // Save on FIREBASE the current game result
   }
 
   setKing(player){
@@ -98,5 +96,10 @@ export class GameComponent implements OnInit {
         this.endGame()
       }
     });
+  }
+  
+  getKingLeader(){
+    this.games.query.orderByChild('score').limitToLast(1);
+
   }
 }
