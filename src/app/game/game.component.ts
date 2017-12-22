@@ -1,9 +1,10 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, NgZone } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { database } from 'firebase';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from "../../app/auth.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'game',
@@ -19,47 +20,48 @@ export class GameComponent implements OnInit {
   timer: any = null;
   games: AngularFireList<any>;
   koth: AngularFireList<any>;
-  currentUser: any;
+  currentKing: AngularFireList<any>;
   kingObservable: Observable<any[]>;
+  currentUser: any;
   score: any;
 
 
-  constructor(public database: AngularFireDatabase) {
+  constructor(public database: AngularFireDatabase,private user: AuthService,private zone: NgZone, private router: Router) {
+
     this.games = database.list('/games');
     this.koth = database.list('/');
+    this.currentKing = database.list('/KingOfTheHill')
     const kothObservable$ : AngularFireList<any> = database.list('kingOfTheHill');
     const kothObservable = database.object('kingOfTheHill/email');
 
-    // const queryObservable = this.kingObservable.switchMap(size =>
-    //   database.list('/kingOfTheHill', ref => ref.equalTo('email')).valueChanges()
-    // );
   }
 
   ngOnInit() {
-    this.currentUser = "javi@test.com";
+    this.currentUser = this.user.currentUser.email;
     this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
     this.score = this.maxScore.score;
+    // this.maxScore.subscribe(item => {
+    //   this.maxScore = item[0].score;
+    //   this.leader = item[0].email;
+    // console.log(this.currentUser);
+    // })
+    this.setKingScore()
+  }
+  setKingScore(){
+    this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
     this.maxScore.subscribe(item => {
       this.maxScore = item[0].score;
       this.leader = item[0].email;
+    console.log(this.currentUser);
     })
   }
-  ngOnChanges() {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
-    this.score = this.maxScore.score;
-    this.maxScore.subscribe(item => {
-      this.maxScore = item[0].score;
-      this.leader = item[0].email;
-    })
-  }
-
   play(){
     this.gameStatus = true;
     console.log(this.gameStatus);
     this.timer = setInterval(this.playTimer.bind(this), 1);
-    this.setKing('aitor@test.com');
+    this.setKing(this.currentUser);
+    this.getKing();
+    this.setKingScore()
   }
 
   playTimer(){
@@ -67,25 +69,19 @@ export class GameComponent implements OnInit {
   }
 
   endGame(){
-    // const queryObservable = this.kingObservable.switchMap(size =>
-    //   database.list('/kingOfTheHill', ref => ref.equalTo('email')).valueChanges()
-    // );
-    // queryObservable.subscribe(queriedItems => {
-    //   console
-    // })
     clearInterval(this.timer);
     this.saveGame(this.currentUser, this.cont);
     this.cont = 0;
     this.gameStatus = false;
+    this.router.navigate(['/score']);
   }
-  
+
   saveGame(player, cont){
     let date = new Date().getTime();
-    this.games.set(date.toString() ,{ 
-      email: 'javi@test.com',
-      score: cont  
+    this.games.set(date.toString() ,{
+      email: player,
+      score: cont
     });
-    // Save on FIREBASE the current game result
   }
 
   setKing(player){
@@ -93,8 +89,17 @@ export class GameComponent implements OnInit {
         email: player
     });
   }
-  getKingLeader(){
-    this.games.query.orderByChild('score').limitToLast(1);
-
+  getKing(){
+    this.currentKing.valueChanges().subscribe((data) => {
+      console.log(data[0]);
+      if (data[0] != this.currentUser){
+        this.endGame()
+      }
+    });
   }
+  showScoreBoard() {
+    this.zone.run(() => {
+      this.router.navigate(['/app-score']);
+      });
+    }
 }

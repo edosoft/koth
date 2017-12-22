@@ -1,4 +1,4 @@
-import {KothMaterialModule} from './koth-material/koth-material.module';
+import { KothMaterialModule} from './koth-material/koth-material.module'
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'signin', component: SigninComponent },
   {path: 'game', component: GameComponent },
+  {path: 'score', component: ScoreComponent},
   {path: 'leaderList', component: LeaderListComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
