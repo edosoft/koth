@@ -22,19 +22,19 @@ export class GameComponent implements OnInit {
   currentUser: any;
   kingObservable: Observable<any[]>;
   score: any;
-  
+
 
   constructor(public database: AngularFireDatabase) {
     this.games = database.list('/games');
     this.koth = database.list('/');
     const kothObservable$ : AngularFireList<any> = database.list('kingOfTheHill');
     const kothObservable = database.object('kingOfTheHill/email');
-  
+
     // const queryObservable = this.kingObservable.switchMap(size =>
     //   database.list('/kingOfTheHill', ref => ref.equalTo('email')).valueChanges()
     // );
   }
-      
+
   ngOnInit() {
     this.currentUser = "javi@test.com";
     this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
