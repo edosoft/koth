@@ -37,7 +37,7 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = this.user.currentUser.email;
+    this.currentUser = this.user.currentUser;
     this.maxScore = this.database.list('/games', ref => ref.orderByChild('score').limitToLast(1)).valueChanges();
     this.score = this.maxScore.score;
     // this.maxScore.subscribe(item => {

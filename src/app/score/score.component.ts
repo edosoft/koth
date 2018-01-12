@@ -29,14 +29,14 @@ export class ScoreComponent implements OnInit {
 
   ngOnInit() {
       this.currentUser = this.auth.currentUser;
-      this.last_user_game = this.db.list('/games', ref => ref.orderByChild('email').equalTo(this.currentUser.email).limitToLast(1)).valueChanges();
+      this.last_user_game = this.db.list('/games', ref => ref.orderByChild('email').equalTo(this.currentUser).limitToLast(1)).valueChanges();
       this.last_user_game.subscribe((score) => {
         this.score = score[0].score;
       });
       this.games.subscribe((game) => {
         game = game.reverse();
         for (var i = 0; i < game.length; i++){
-          if (game[i].email == this.currentUser.email){
+          if (game[i].email == this.currentUser){
             this.rank = i + 1;
             this.record = game[i].score;
             break;
