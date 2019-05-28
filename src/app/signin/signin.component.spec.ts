@@ -51,7 +51,7 @@ describe('SigninComponent', () => {
   });
 
   it('User name should be an email', () => {
-    userT = 'Pilarica24@gmail.com';
+    userT = 'dani.sanjuan@gmail.com';
     fixture.detectChanges();
     expect(userT).toMatch('^[a-zA-Z0-9_]+([\.-]?[a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([\.-]?[a-zA-Z0-9_]+)*(\.[a-zA-Z0-9_]{2,4})+$');
   });

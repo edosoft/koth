@@ -9,23 +9,28 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {KothMaterialModule} from '../koth-material/koth-material.module'
 import { Routes, RouterModule } from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
 import * as firebase from 'firebase/app';
 import { environment } from '../../environments/environment';
 
 
 describe('ScoreComponent', () => {
+  const appRoutes: Routes = [
+      { path: 'score', component: ScoreComponent }
+  ];
   let component: ScoreComponent;
   let fixture: ComponentFixture<ScoreComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ KothMaterialModule,
+        RouterModule.forRoot(appRoutes, {enableTracing: true}),
         AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),AngularFireAuthModule,
         AngularFireDatabaseModule,
         RouterModule
       ],
       declarations: [ ScoreComponent ],
-      providers: [AuthService,AngularFireAuth],
+      providers: [AuthService, AngularFireAuth, {provide: APP_BASE_HREF, useValue : '/' }],
     })
     .compileComponents();
   }));
@@ -33,6 +38,7 @@ describe('ScoreComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ScoreComponent);
     component = fixture.componentInstance;
+    component.currentUser = "pedro@pedro.com";
     fixture.detectChanges();
   });
 
@@ -49,6 +55,7 @@ describe('ScoreComponent', () => {
   it('should display score', () => {
     component.record = 2;
     component.score = 0;
+    component.rank = 2;
     fixture.detectChanges();
     const scoreText = fixture.debugElement.query(By.css('p'));
     const el = scoreText.nativeElement;
@@ -58,6 +65,7 @@ describe('ScoreComponent', () => {
   it('should congrat you if you beat your record', () => {
     component.record = 0;
     component.score = 2;
+    component.rank = 2;
     fixture.detectChanges();
     const scoreText = fixture.debugElement.query(By.css('p'));
     const el = scoreText.nativeElement;
@@ -71,6 +79,7 @@ describe('ScoreComponent', () => {
     // el.map(x => expect(x.textContent).toEqual(`Your score is: ${component.score}`));
     component.record = 0;
     component.score = 2;
+    component.rank = 1;
     fixture.detectChanges();
     const rankingText = fixture.debugElement.queryAll(By.css('p'))[1];
     const el = rankingText.nativeElement;
@@ -80,15 +89,10 @@ describe('ScoreComponent', () => {
   it('should display record', () => {
     component.record = 0;
     component.score = 2;
+    component.rank = 1;
     fixture.detectChanges();
     const recordText = fixture.debugElement.queryAll(By.css('p'))[2];
     const el = recordText.nativeElement;
     expect(el.textContent).toEqual(`Your current record is: ${component.record}`);
-  });
-
-  it('should have a button with name Retry', () => {
-    const retryBtn = fixture.debugElement.query(By.css('button'));
-    const el = retryBtn.nativeElement;
-    expect(el.textContent).toEqual('Retry');
   });
 });

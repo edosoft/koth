@@ -18,6 +18,7 @@ import { ScoreComponent } from './score/score.component';
 import { SigninComponent } from './signin/signin.component';
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game/game.component';
+import { LeaderListComponent } from './leader-list/leader-list.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent },
@@ -27,9 +28,6 @@ const appRoutes: Routes = [
   {path: 'leaderList', component: LeaderListComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
-
-import { LeaderListComponent } from './leader-list/leader-list.component';
-
 
 @NgModule({
   declarations: [
